@@ -190,7 +190,7 @@ func postPush(category string, title string, body string, deviceToken string,  p
 		payload.AlertBody(body)
 	}
 	notification.Payload = payload
-
+	notification.Topic = "me.fin.bark"
 	res, err := apnsClient.Push(notification)
 
 	if err != nil {
@@ -247,7 +247,7 @@ func main()  {
 	if err != nil {
 		log.Fatalln("cer error")
 	}
-	apnsClient = apns2.NewClient(cert).Development()
+	apnsClient = apns2.NewClient(cert).Production()
 
 
 
